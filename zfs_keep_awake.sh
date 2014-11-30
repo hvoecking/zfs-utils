@@ -12,7 +12,7 @@ if [[ $POOL == --help || $POOL == -h ]]
 then
 	echo \
 'Usage (as root):' $0 '<pool>
-Imports the specified pool and touches the file "keep_awake" every 20 seconds
+Imports the specified pool and touches the file ".keep_awake" every 20 seconds
 to avoid external USB racks (eg. ICY BOX) to shutdown while the zfs is still
 mounted. On exit (eg. with ctrl-c) this script automatically exports the pool.
 	-h, --help	Display this help
@@ -27,9 +27,11 @@ then
 fi
 
 zpool import $POOL
+KEEP_AWAKE_FILE=/$POOL/.keep_awake
 echo Import of $POOL successful
 
 graceful_unmount() {
+	rm $KEEP_AWAKE_FILE
 	while ! zpool export $POOL
 	do
 		echo Failed to unmount $POOL, potential problems:
@@ -40,7 +42,7 @@ graceful_unmount() {
 }
 
 keep_awake() {
-	touch /$POOL/keep_awake
+	touch $KEEP_AWAKE_FILE
 }
 
 trap 'keep_awake && graceful_unmount' EXIT

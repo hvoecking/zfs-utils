@@ -11,4 +11,4 @@ A systemd hook which automatically exports the specified zfs pool. Any process a
 
 ### zfs_keep_awake.sh
 
-Imports the specified pool and touches the file "keep_awake" every 20 seconds to avoid external USB racks (eg. ICY BOX) to shutdown while the zfs is still mounted. On exit (eg. with ctrl-c) this script automatically exports the pool.
+Imports the specified pool and touches the file ".keep_awake" every 20 seconds to avoid external USB racks (eg. ICY BOX) to shutdown while the zfs pool is still imported. On exit (eg. with ctrl-c) this script automatically exports the pool.
