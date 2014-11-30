@@ -6,7 +6,7 @@ A collection of scripts I created for my own use to ease working with zfs.
 
 ### unmount_zfs.sh
 
-A systemd hook which automatically exports the specified zfs pool. Any process accessing this pool is killed with SIGKILL. Install this script in the by copying the etc folder to your root directory.
+A systemd hook which automatically exports the specified zfs pool. Any process accessing this pool is killed with SIGKILL. Install this script by copying the `usr` folder to your root directory and replacing the pool name `tank` with the name of your pool.
 
 
 ### zfs_keep_awake.sh
