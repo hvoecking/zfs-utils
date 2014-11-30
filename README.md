@@ -1,4 +1,4 @@
-zsf-utils
+zfs-utils
 =========
 A collection of scripts I created for my own use to ease working with zfs.
 
